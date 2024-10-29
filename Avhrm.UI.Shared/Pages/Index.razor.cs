@@ -27,6 +27,11 @@ public partial class Index
         NavigationManager.NavigateTo("/workingreport/search");
     }
 
+    public async Task OnWorkingChildClick(MouseEventArgs e)
+    {
+        NavigationManager.NavigateTo("/workingreport/childreport");
+    }
+
     public async Task OnWorkingChallengeClick(MouseEventArgs e)
     {
         NavigationManager.NavigateTo("/workingchallenge/manage");

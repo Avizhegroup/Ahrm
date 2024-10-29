@@ -1,15 +1,42 @@
-﻿@page "/workingreport/search"
+﻿@page "/workingreport/childreport"
 @using Microsoft.AspNetCore.Components.Web.Virtualization
 
 <div class="page-header text-align-center">
-    @TextResources.APP_StringKeys_WorkingReport_Search
+    @TextResources.APP_StringKeys_WorkingReport_ChildUsers
 </div>
 <div class="pages-workingreport-search text-align-center">
+    @if (IsMessageShown)
+    {
+        <MudAlert Severity="AlertSeverity"
+                  Variant="Variant.Filled"
+                  Class="rounded-0"
+                  ShowCloseIcon="true"
+                  CloseIconClicked="()=> IsMessageShown = false">
+            <ul>
+                @foreach (var text in MessageTexts)
+                {
+                    <li>
+                        @text
+                    </li>
+                }
+            </ul>
+        </MudAlert>
+    }
     <EditForm Model="Request"
               OnInvalidSubmit="OnInvalidSubmit"
               OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
         <div class="search-box">
             <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Row="true" Spacing="2">
+                <div class="form-group" style="flex-grow: 1;">
+                    <MudSelect @bind-Value="Request.UserId"
+                               Label="@TextResources.APP_StringKeys_User">
+                        @foreach (var user in ChildUsers)
+                        {
+                            <MudSelectItem Value="@user.Id">@user.PersianName (@user.UserName)</MudSelectItem>
+                        }
+                    </MudSelect>
+                </div>
                 <div class="form-group" style="flex-grow: 1;">
                     <MudDatePicker Label="@TextResources.APP_StringKeys_Date"
                                    @bind-Date="Request.Date"
@@ -21,12 +48,6 @@
                         style="width: 45px; height: 40px; display: flex; align-items: center; justify-content: center;">
                     <MaterialIcon IconName="@MaterialIconsHelper.Search"></MaterialIcon>
                 </button>
-                <NavLink href="/workingreport/add"
-                         Match="NavLinkMatch.All"
-                         class="btn btn-primary page-floating-button-bottom"
-                         style="width: 45px; height: 40px; display: flex; align-items: center; justify-content: center;">
-                    <MaterialIcon IconName="@MaterialIconsHelper.Add"></MaterialIcon>
-                </NavLink>
             </MudStack>
         </div>
     </EditForm>
@@ -39,6 +60,7 @@
         </div>
         <hr />
         <div class="div-ver-overflow">
+
             <Virtualize Items="Reports"
                         ItemSize="10"
                         OverscanCount="10">
@@ -57,20 +79,10 @@
                             <MaterialIcon IconName="@MaterialIconsHelper.Title"></MaterialIcon>
                             @context.Desc
                         </MudText>
-                        <MudText Typo="Typo.body2">
-                            <MaterialIcon IconName="@MaterialIconsHelper.Work"></MaterialIcon>
-                            @context.WorkTypeDescription
-                        </MudText>
                     </MudCardContent>
-                    <MudCardActions Class="text-align-center">
-                        <NavLink href="@($"/workingreport/edit/{context.Id}")"
-                                 Match="NavLinkMatch.All"
-                                 class="btn btn-secondary">
-                            <MaterialIcon IconName="@MaterialIconsHelper.Edit"></MaterialIcon>
-                        </NavLink>
-                    </MudCardActions>
                 </MudCard>
             </Virtualize>
+
         </div>
     }
 

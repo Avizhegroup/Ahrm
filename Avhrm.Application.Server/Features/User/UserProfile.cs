@@ -20,5 +20,8 @@ public class UserProfile : Profile
         CreateMap<IdentityRole<string>, GetAllRolesDto>();
         
         CreateMap<ApplicationUser, GetUserByUsernameVm>();
+
+        CreateMap<ApplicationUser, GetChildUsersDto>()
+            .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department.Name));
     }
 }

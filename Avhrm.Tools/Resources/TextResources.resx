@@ -261,4 +261,10 @@
   <data name="APP_StringKeys_Account_Point" xml:space="preserve">
     <value>امتیاز کاربری</value>
   </data>
+  <data name="APP_StringKeys_WorkingReport_ChildUsers" xml:space="preserve">
+    <value>گزارش کاربر زیر مجموعه</value>
+  </data>
+  <data name="APP_StringKeys_User" xml:space="preserve">
+    <value>کاربر</value>
+  </data>
 </root>
