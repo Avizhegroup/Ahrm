@@ -124,19 +124,19 @@
                               Lines="3" />
             </div>
         </div>
-       
-            <button type="submit"
+
+        <button type="submit"
                 class="btn btn-primary page-floating-button-bottom">
-                <MaterialIcon IconName="@MaterialIconsHelper.Save"></MaterialIcon>
-            </button>
-            @if (Id is not null)
-            {
-                <button type="button"
+            <MaterialIcon IconName="@MaterialIconsHelper.Save"></MaterialIcon>
+        </button>
+        @if (Id is not null)
+        {
+            <button type="button"
                     class="btn btn-danger page-floating-button-bottom"
-                        @onclick="OnDeleteClick">
-                    <MaterialIcon IconName="@MaterialIconsHelper.Delete"></MaterialIcon>
-                </button>
-            }
+                    @onclick="OnDeleteClick">
+                <MaterialIcon IconName="@MaterialIconsHelper.Delete"></MaterialIcon>
+            </button>
+        }
     </EditForm>
     <MudOverlay Visible="IsLoading"
                 DarkBackground="true">

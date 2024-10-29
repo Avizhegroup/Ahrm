@@ -106,6 +106,15 @@ namespace Avhrm.Tools.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to امتیاز کاربری.
+        /// </summary>
+        public static string APP_StringKeys_Account_Point {
+            get {
+                return ResourceManager.GetString("APP_StringKeys_Account_Point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نام کاربری.
         /// </summary>
         public static string APP_StringKeys_Account_Username {
@@ -113,18 +122,7 @@ namespace Avhrm.Tools.Resources {
                 return ResourceManager.GetString("APP_StringKeys_Account_Username", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to نام کاربری.
-        /// </summary>
-        public static string APP_StringKeys_Account_Point
-        {
-            get
-            {
-                return ResourceManager.GetString("APP_StringKeys_Account_Point", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to افزودن.
         /// </summary>
@@ -405,6 +403,15 @@ namespace Avhrm.Tools.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to کاربر.
+        /// </summary>
+        public static string APP_StringKeys_User {
+            get {
+                return ResourceManager.GetString("APP_StringKeys_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to کاربر سرپرست.
         /// </summary>
         public static string APP_StringKeys_User_Parent {
@@ -473,6 +480,15 @@ namespace Avhrm.Tools.Resources {
         public static string APP_StringKeys_WorkingReport_Add {
             get {
                 return ResourceManager.GetString("APP_StringKeys_WorkingReport_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to گزارش کاربر زیر مجموعه.
+        /// </summary>
+        public static string APP_StringKeys_WorkingReport_ChildUsers {
+            get {
+                return ResourceManager.GetString("APP_StringKeys_WorkingReport_ChildUsers", resourceCulture);
             }
         }
         

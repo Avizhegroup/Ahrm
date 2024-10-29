@@ -53,4 +53,12 @@ public class AccountController(IMediator mediator) : AvhrmBaseController
         Successful = true,
         Value = (await mediator.Send<GetAllRolesVm>(new GetAllRolesQuery()))
     });
+
+    [HttpGet("[action]")]
+    public async Task<IActionResult> GetChildUsers()
+    => Ok(new ApiResponse()
+    {
+        Successful = true,
+        Value = (await mediator.Send<GetChildUsersVm>(new GetChildUsersQuery()))
+    });
 }

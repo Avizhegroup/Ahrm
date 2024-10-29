@@ -20,6 +20,14 @@ public class WorkReportController(IMediator mediator) : AvhrmBaseController
         Value = await mediator.Send<GetUserWorkingReportByDateVm>(command)
     });
 
+    [HttpGet("[action]")]
+    public async Task<IActionResult> GetByChildDate([FromBody] GetWorkReportOfChildUsersQuery command)
+    => Ok(new ApiResponse()
+    {
+        Successful = true,
+        Value = await mediator.Send<GetWorkReportOfChildUsersVm>(command)
+    });
+
     [HttpPost("[action]")]
     public async Task<IActionResult> Insert([FromBody]InsertWorkReportCommand command)
     => Ok(new ApiResponse()
