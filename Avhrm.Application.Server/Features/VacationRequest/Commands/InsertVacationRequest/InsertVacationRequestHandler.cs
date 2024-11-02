@@ -14,10 +14,6 @@ public class InsertVacationRequestHandler(AvhrmDbContext context
 
         data.IsVerified = false;
 
-        data.CreateDateTime = DateTime.Now;
-
-        data.CreatorUserId = httpContextAccessor.HttpContext.User.GetUserId();
-
         await context.AddAsync(request);
 
         return new()

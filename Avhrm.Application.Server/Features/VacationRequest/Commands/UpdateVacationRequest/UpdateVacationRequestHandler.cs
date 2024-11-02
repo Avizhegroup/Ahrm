@@ -12,10 +12,6 @@ public class UpdateVacationRequestHandler(IMapper mapper
     {
         var data = mapper.Map<VacationRequest>(request);
 
-        data.LastUpdateDateTime = DateTime.Now;
-
-        data.LastUpdateUserId = httpContextAccessor.HttpContext.User.GetUserId();
-
         context.Update(request);
 
         return new()

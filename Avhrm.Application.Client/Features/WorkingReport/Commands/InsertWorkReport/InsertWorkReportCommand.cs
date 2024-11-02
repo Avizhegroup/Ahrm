@@ -2,7 +2,7 @@
 public class InsertWorkReportCommand : IRequest<InsertWorkReportVm>
 {
     [Required]
-    public string PersianDate { get; set; }
+    public DateTime? PersianDate { get; set; }
  
     [StringLength(512)]
     public string? Desc { get; set; }

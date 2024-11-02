@@ -32,10 +32,6 @@ public class InsertWorkReportHandler(IMapper mapper
                 workReport.WorkChallenges.Add(workChallenge);
             }
 
-            workReport.CreateDateTime = DateTime.Now;
-
-            workReport.CreatorUserId = httpContextAccessor.HttpContext.User.GetUserId();
-
             await context.AddAsync(workReport, cancellationToken);
 
             await context.SaveChangesAsync(cancellationToken);

@@ -12,10 +12,6 @@ public class InsertWorkChallengeHandler(AvhrmDbContext context
     {
         var workChallenge= mapper.Map<WorkChallenge>(request);
 
-        workChallenge.CreateDateTime = DateTime.Now;
-
-        workChallenge.CreatorUserId = httpContextAccessor.HttpContext.User.GetUserId();
-
         await context.AddAsync(workChallenge, cancellationToken);
 
         return new()

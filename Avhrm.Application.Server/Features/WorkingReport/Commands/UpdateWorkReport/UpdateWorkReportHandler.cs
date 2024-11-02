@@ -10,10 +10,27 @@ public class UpdateWorkReportHandler(IMapper mapper
 {
     public async Task<UpdateWorkReportVm> Handle(UpdateWorkReportCommand request, CancellationToken cancellationToken)
     {
-        WorkReport workReport = mapper.Map<WorkReport>(request);
+        var workReport = await context.WorkingReports
+                                                .Include(p=> p.WorkChallenges)
+                                                .FirstOrDefaultAsync(p=>p.Id == request.Id, cancellationToken);
 
-        workReport.LastUpdateDateTime = DateTime.Now;
-        workReport.LastUpdateUserId = httpContextAccessor.HttpContext.User.GetUserId();
+        ManageWorkChallenges(workReport, request);
+
+        workReport.WorkReportTimeOfDay = (int)request.WorkReportTimeOfDay;
+
+        workReport.WorkDayType = (int)request.WorkDayType;
+
+        workReport.WorkTypeId = request.WorkTypeId;
+
+        workReport.CustomerId = request.CustomerId;
+
+        workReport.ProjectId = request.ProjectId;
+
+        workReport.SpentHours = request.SpentHours;
+
+        workReport.Desc = request.Desc;
+
+        workReport.PersianDate = PersianCalendarTools.GregorianToPersian(request.PersianDate);
 
         context.Update(workReport);
 
@@ -21,5 +38,29 @@ public class UpdateWorkReportHandler(IMapper mapper
         {
             Result = await context.SaveChangesAsync() > 0
         };
+    }
+
+    private void ManageWorkChallenges(WorkReport workReport, UpdateWorkReportCommand request)
+    {
+        if (workReport.WorkChallenges is null)
+        {
+            workReport.WorkChallenges = new HashSet<WorkChallenge>();
+        }
+        else
+        {
+            workReport.WorkChallenges.Clear();
+        }
+
+        foreach (var workChallengeId in request.WorkChallengesIds)
+        {
+            WorkChallenge workChallenge = new()
+            {
+                Id = workChallengeId
+            };
+
+            context.WorkChallenges.Attach(workChallenge);
+
+            workReport.WorkChallenges.Add(workChallenge);
+        }
     }
 }
