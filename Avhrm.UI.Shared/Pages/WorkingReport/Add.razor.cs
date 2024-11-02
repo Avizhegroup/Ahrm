@@ -63,7 +63,7 @@ public partial class Add
                                    .Where(p=> p.DepartmentId == int.Parse(user.GetDepartmentId()))
                                    .ToList();
 
-        Command.PersianDate = PersianCalendarTools.GregorianToPersian(DateTime.Now);
+        Command.PersianDate = DateTime.Now.Date;
 
         if (Id is not null)
         {
@@ -81,7 +81,7 @@ public partial class Add
         }
         else
         {
-            Command.PersianDate = PersianCalendarTools.GregorianToPersian(DateTime.Now);
+            Command.PersianDate = DateTime.Now.Date;
         }
 
         IsLoading = false;
@@ -95,9 +95,13 @@ public partial class Add
 
         if (Id is not null)
         {
+            var data = Mapper.Map<UpdateWorkReportCommand>(Command);
+
+            data.Id = Id.Value;
+
             result = (await Api.SendJsonAsync<UpdateWorkReportVm>(HttpMethod.Put
                 , "WorkReport/Update"
-                , Mapper.Map<UpdateWorkReportCommand>(Command))).Value.Result;
+                , data)).Value.Result;
         }
         else
         {

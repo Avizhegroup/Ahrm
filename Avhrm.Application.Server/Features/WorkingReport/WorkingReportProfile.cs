@@ -8,14 +8,16 @@ public class WorkingReportProfile : Profile
     {
         CreateMap<WorkReport, InsertWorkReportCommand>()
             .ForMember(dest => dest.WorkChallengesIds, opt => opt.MapFrom(src => src.WorkChallenges.Select(p => p.Id)))
-            .ReverseMap();
+            .ForMember(dest => dest.PersianDate, opt => opt.MapFrom(src => PersianCalendarTools.PersianToGregorian(src.PersianDate)))
+            .ReverseMap()
+            .ForMember(dest => dest.PersianDate, opt => opt.MapFrom(src => PersianCalendarTools.GregorianToPersian(src.PersianDate)));
 
         CreateMap<WorkReport, GetUserWorkingReportByDateDto>()
             .ForMember(dest => dest.WorkTypeDescription, opt => opt.MapFrom(src => src.WorkType.Description));
- 
+
         CreateMap<WorkReport, GetWorkReportByIdVm>()
             .ForMember(dest => dest.WorkChallengesIds, opt => opt.MapFrom(src => src.WorkChallenges.Select(p => p.Id)));
- 
+
         CreateMap<WorkReport, GetWorkReportOfChildUsersDto>();
     }
 }

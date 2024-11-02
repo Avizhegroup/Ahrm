@@ -7,6 +7,7 @@ public class WorkingReportProfile : Profile
     {
         CreateMap<InsertWorkReportCommand, UpdateWorkReportCommand>();
 
- CreateMap<GetWorkReportByIdVm, InsertWorkReportCommand>();
+        CreateMap<GetWorkReportByIdVm, InsertWorkReportCommand>()
+            .ForMember(dest => dest.PersianDate, opt => opt.MapFrom(src => PersianCalendarTools.PersianToGregorian(src.PersianDate)));
     }
 }

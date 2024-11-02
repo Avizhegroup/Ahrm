@@ -1,14 +1,19 @@
 ﻿using Avhrm.Domains;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Avhrm.Persistence.Services;
-
 public class AvhrmDbContext : IdentityDbContext<ApplicationUser>
 {
-    public AvhrmDbContext(DbContextOptions<AvhrmDbContext> options) : base(options)
+    private readonly IHttpContextAccessor httpContextAccessor;
+
+    public AvhrmDbContext(DbContextOptions<AvhrmDbContext> options
+        , IHttpContextAccessor httpContextAccessor) : base(options)
     {
         Database.Migrate();
+
+        this.httpContextAccessor = httpContextAccessor;
     }
   
     public DbSet<VacationRequest> VacationRequests { get; set; }
@@ -25,5 +30,31 @@ public class AvhrmDbContext : IdentityDbContext<ApplicationUser>
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(Project).Assembly);
 
         base.OnModelCreating(modelBuilder);
+    }
+
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        var entries = ChangeTracker.Entries()
+                                                       .Where(e => e.Entity is IBaseEntity);
+
+        var userId = httpContextAccessor.HttpContext.User.GetUserId();
+
+        foreach (var entry in entries)
+        {
+            var entity = (IBaseEntity)entry.Entity;
+
+            if (entry.State == EntityState.Added)
+            {
+                entity.CreateDateTime = DateTime.UtcNow;
+                entity.CreatorUserId = userId;
+            }
+            else if (entry.State == EntityState.Modified)
+            {
+                entity.LastUpdateDateTime = DateTime.UtcNow;
+                entity.LastUpdateUserId = userId;
+            }
+        }
+
+        return await base.SaveChangesAsync(cancellationToken);
     }
 }
