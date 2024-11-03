@@ -1,5 +1,4 @@
-﻿using Avhrm.Domains;
-using Avhrm.Infrastructure.Client;
+﻿using Avhrm.Infrastructure.Client;
 
 namespace Avhrm.UI.Shared.Pages.WorkingChallenge;
 public partial class ManageWorkingChallenges

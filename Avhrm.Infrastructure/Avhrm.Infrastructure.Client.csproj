@@ -4,14 +4,15 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<UseMauiEssentials Condition=" '$(BlazorMode)' == 'BlazorHybrid' ">true</UseMauiEssentials>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
-	  <PackageReference Include="Microsoft.JSInterop" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.JSInterop" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(BlazorMode)' == 'BlazorServer' ">
@@ -21,8 +22,24 @@
 		<PackageReference Include="Serilog.Sinks.Seq" Version="8.0.0" />
 	</ItemGroup>
 
+
+	<ItemGroup Condition=" '$(BlazorMode)' == 'BlazorHybrid' ">
+		<Using Include="Microsoft.Maui" />
+		<Using Include="Microsoft.Maui.Graphics" />
+		<Using Include="Microsoft.Maui.Accessibility" />
+		<Using Include="Microsoft.Maui.ApplicationModel" />
+		<Using Include="Microsoft.Maui.ApplicationModel.Communication" />
+		<Using Include="Microsoft.Maui.ApplicationModel.DataTransfer" />
+		<Using Include="Microsoft.Maui.Authentication" />
+		<Using Include="Microsoft.Maui.Devices" />
+		<Using Include="Microsoft.Maui.Devices.Sensors" />
+		<Using Include="Microsoft.Maui.Media" />
+		<Using Include="Microsoft.Maui.Networking" />
+		<Using Include="Microsoft.Maui.Storage" />
+	</ItemGroup>
+
 	<ItemGroup>
-	  <ProjectReference Include="..\Avhrm.Application.Client\Avhrm.Application.Client.csproj" />
+		<ProjectReference Include="..\Avhrm.Application.Client\Avhrm.Application.Client.csproj" />
 	</ItemGroup>
 
 </Project>

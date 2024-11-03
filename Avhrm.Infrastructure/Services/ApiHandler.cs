@@ -45,7 +45,7 @@ public class ApiHandler(IJSRuntime jsRuntime
 #if BlazorServer
                 await jsRuntime.InvokeVoidAsync("window.localStorage.removeItem", "jwt");
 #else
-                    Preferences.Remove("access_token");
+                Preferences.Remove("access_token");
 #endif
                 navigationManager.NavigateTo("/account/login", true);
             }

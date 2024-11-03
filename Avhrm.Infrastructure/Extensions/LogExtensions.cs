@@ -31,6 +31,6 @@ public static class LogExtensions
 
             config.AddSerilog(logger: Log.Logger, dispose: true);
         });
-    }
 #endif
+    }
 }
