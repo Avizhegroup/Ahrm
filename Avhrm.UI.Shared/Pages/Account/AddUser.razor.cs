@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Avhrm.Infrastructure.Client;
-using Azure.Core;
 
 namespace Avhrm.UI.Shared.Pages.Account;
 public partial class AddUser
