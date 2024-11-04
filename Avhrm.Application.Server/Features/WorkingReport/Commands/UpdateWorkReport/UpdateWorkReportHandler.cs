@@ -42,25 +42,30 @@ public class UpdateWorkReportHandler(IMapper mapper
 
     private void ManageWorkChallenges(WorkReport workReport, UpdateWorkReportCommand request)
     {
-        if (workReport.WorkChallenges is null)
+        var existingWorkChallenges = workReport.WorkChallenges.ToList();
+
+        foreach (var existingWorkChallenge in existingWorkChallenges)
         {
-            workReport.WorkChallenges = new HashSet<WorkChallenge>();
-        }
-        else
-        {
-            workReport.WorkChallenges.Clear();
+            if (!request.WorkChallengesIds.Contains(existingWorkChallenge.Id))
+            {
+                workReport.WorkChallenges.Remove(existingWorkChallenge);
+            }
         }
 
         foreach (var workChallengeId in request.WorkChallengesIds)
         {
-            WorkChallenge workChallenge = new()
+            if (!workReport.WorkChallenges.Any(wc => wc.Id == workChallengeId))
             {
-                Id = workChallengeId
-            };
+                var workChallenge = context.WorkChallenges.Local.FirstOrDefault(wc => wc.Id == workChallengeId)
+                                    ?? new WorkChallenge { Id = workChallengeId };
 
-            context.WorkChallenges.Attach(workChallenge);
+                if (!context.WorkChallenges.Local.Any(wc => wc.Id == workChallengeId))
+                {
+                    context.WorkChallenges.Attach(workChallenge);
+                }
 
-            workReport.WorkChallenges.Add(workChallenge);
+                workReport.WorkChallenges.Add(workChallenge);
+            }
         }
     }
 }

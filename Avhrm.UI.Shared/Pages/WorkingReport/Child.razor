@@ -41,7 +41,10 @@
                     <MudDatePicker Label="@TextResources.APP_StringKeys_Date"
                                    @bind-Date="Request.Date"
                                    Culture="@MudblazorDatePickerHelper.GetPersianCulture()"
-                                   TitleDateFormat="dddd, dd MMMM" />
+                                   TitleDateFormat="dddd, dd MMMM" 
+                                   PickerVariant="PickerVariant.Dialog" 
+                                   Variant="Variant.Outlined"
+                                   Margin="Margin.Dense" />
                 </div>
                 <button type="submit"
                         class="btn btn-success"
