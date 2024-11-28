@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<UseMauiEssentials Condition=" '$(BlazorMode)' == 'BlazorHybrid' ">true</UseMauiEssentials>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -21,21 +21,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.3" />
-		<PackageReference Include="Grpc.Net.Client" Version="2.59.0" />
-		<PackageReference Include="Grpc.Net.Client.Web" Version="2.59.0" />
-		<PackageReference Include="BuildWebCompiler2022" Version="1.14.9.1">
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+		<PackageReference Include="BuildWebCompiler2022">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.2.2">
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
+		<PackageReference Include="Microsoft.Extensions.Http"/>
+		<PackageReference Include="Microsoft.TypeScript.MSBuild">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="MudBlazor" Version="6.19.1" />
+		<PackageReference Include="MudBlazor" />
 	</ItemGroup>
 
 	<ItemGroup>
