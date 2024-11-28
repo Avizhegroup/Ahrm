@@ -1,20 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<ProjectReference Include="..\Avhrm.Domains\Avhrm.Domains.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
-		<PackageReference Include="Microsoft.entityframeworkcore.sqlserver" Version="8.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions"  />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+		<PackageReference Include="Microsoft.entityframeworkcore.sqlserver"/>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" >
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>

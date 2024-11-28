@@ -1,0 +1,53 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="MediatR" Version="12.4.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="7.1.0" />
+    <PackageVersion Include="AutoMapper" Version="13.0.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="8.2.1" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.JSInterop" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+    <PackageVersion Include="Serilog" Version="4.1.0" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="8.0.3" />
+    <PackageVersion Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageVersion Include="Serilog.Sinks.Seq" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageVersion Include="Microsoft.entityframeworkcore.sqlserver" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+    <PackageVersion Include="MudBlazor" Version="7.15.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
+    <PackageVersion Include="BuildWebCompiler2022" Version="1.14.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.TypeScript.MSBuild" Version="5.7.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageVersion>
+  </ItemGroup>
+</Project>
